@@ -1,4 +1,4 @@
-# ------ Initialize Azure Terraform required_providers
+# ------ Initialize Azure Terraform provider
 terraform {
   required_providers {
     azurerm = {
@@ -12,7 +12,6 @@ terraform {
   }
 }
 
-# ------ Initialize Azure Terraform provider
 provider "azurerm" {
   alias   = "azure"
   features {}

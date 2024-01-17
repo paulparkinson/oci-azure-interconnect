@@ -20,7 +20,7 @@ resource "azurerm_subnet" "gateway_subnet" {
   name                 = var.gateway_subnet_name
   resource_group_name  = azurerm_resource_group.resource_group.name
   virtual_network_name = azurerm_virtual_network.virtual_network.name
-  address_prefixes     = [var.azure_gateway_subnet]
+  address_prefixes       = [var.azure_gateway_subnet]
 }
 
 # ------ Create Azure Compute Subnet
@@ -29,8 +29,9 @@ resource "azurerm_subnet" "compute_subnet" {
   name                 = var.compute_subnet_name
   resource_group_name  = azurerm_resource_group.resource_group.name
   virtual_network_name = azurerm_virtual_network.virtual_network.name
-  address_prefixes     = [var.azure_compute_subnet]
+  address_prefixes       = [var.azure_compute_subnet]
 }
+
 
 # ------ Create Azure Gateway Public IP
 resource "azurerm_public_ip" "gateway_public_ip" {
@@ -40,6 +41,7 @@ resource "azurerm_public_ip" "gateway_public_ip" {
   resource_group_name = azurerm_resource_group.resource_group.name
 
   allocation_method = "Dynamic"
+  sku = "Standard"
 }
 
 # ------ Create Azure Compute VM Public IP
@@ -50,6 +52,7 @@ resource "azurerm_public_ip" "machine_public_ip" {
   resource_group_name = azurerm_resource_group.resource_group.name
 
   allocation_method = "Dynamic"
+  sku = "Standard"
 }
 
 # ------ Create Azure Route Table
